@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UsersPage: React.FC = () => {
+const Users: React.FC = () => {
     return (
         <div>
             <h1>Users</h1>
@@ -9,4 +9,16 @@ const UsersPage: React.FC = () => {
     );
 };
 
-export default UsersPage;
+export async function getStaticProps() {
+    const response = await fetch("https://jsonplaceholder.typicode.com/users")
+    const posts = await response.json()
+  
+    return {
+      props: {
+        posts
+      }
+    }
+  }
+  
+export default Users;
+
